@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tourist_places/screens/location_detail/image_banner.dart';
+import 'package:tourist_places/screens/superhero_detail/image_banner.dart';
 import 'text_section.dart';
 
-class LocationDetail extends StatelessWidget {
+class SuperheroDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
