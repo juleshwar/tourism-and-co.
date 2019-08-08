@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tourist_places/screens/superhero_detail/image_banner.dart';
 import 'text_section.dart';
+import '../../models/superhero.dart';
 
 class SuperheroDetail extends StatelessWidget {
+  static final superheroes = Superhero.fetchAll();
+  static final superhero = superheroes.first;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,12 +18,14 @@ class SuperheroDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ImageBanner("assets/images/thanos.jpg"),
-          TextSection("Guy #1", "Lorem ipusm jashd kja sdkjh aksjdh  liasdj llasj dlkajs dlja slkdj lasj lasj "),
-          TextSection("Guy #1", "Lorem ipusm jashd kja sdkjh aksjdh  liasdj llasj dlkajs dlja slkdj lasj lasj "),
-          TextSection("Guy #1", "Lorem ipusm jashd kja sdkjh aksjdh  liasdj llasj dlkajs dlja slkdj lasj lasj "),
-          TextSection("Guy #1", "Lorem ipusm jashd kja sdkjh aksjdh  liasdj llasj dlkajs dlja slkdj lasj lasj ")
+          ...textSections(superhero)
         ],
       )
     );
+  }
+  List<Widget> textSections(superhero) {
+    return superhero.facts
+      .map<Widget>((fact) => TextSection(fact.title, fact.text))
+      .toList();
   }
 }
